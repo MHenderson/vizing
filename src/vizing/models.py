@@ -1,16 +1,14 @@
 r"""
 Python components for modelling list colourings of graphs.
 
-Two notions of vertex colouring are used here.
-
- 1. A mapping from nodes to colours.
- 2. A mapping from colours to lists of colours.
+This module provides several different models of list-colouring problems. 
+Constraint models using the ``python-constraint`` and ``or-tools`` libraries
+are the first to be implemented.
 
 AUTHORS:
 
 - Matthew Henderson (2010-12-23): initial version
 
-EXAMPLES:
 """
 
 #********************************************************************************
@@ -22,14 +20,18 @@ EXAMPLES:
 
 import constraint
 import networkx
-from constraint_solver import pywrapcp
+#from constraint_solver import pywrapcp
 
 from vizing.utils import to_colouring
 
-class CP_model:
+class _CP_model_:
 
     """ 
-        CP_model
+        Constraint model via python-constraint.
+
+        REFERENCES: 
+
+        [pyco] http://labix.org/python-constraint
     """
     
     def __init__(self, graph, list_assignment):
@@ -46,10 +48,14 @@ class CP_model:
         """ XXX doc XXX """
         return to_colouring(self.problem.getSolution())
 
-class or_CP_model:
+class _or_CP_model_:
 
     """ 
-        XXX doc XXX 
+        Constraint model via Google or-tools.
+
+        REFERENCES:
+
+        [orto] http://code.google.com/p/or-tools/
     """
 
     def __init__(self, graph, list_assignment):
@@ -80,43 +86,40 @@ class or_CP_model:
                 self.solution[var] = current.Value(self.var[var])
         return to_colouring(self.solution)
 
-r"""
+def list_colouring(graph, list_assignment, model = 'CP'):
+    r"""
     This function returns a list-colouring of a list-colourable graph.
 
     INPUT:
 
-     - ``graph`` - ...
+     - ``graph`` -- A ``networkx`` graph.
 
-     - ``list_assignment`` -  ...
+     - ``list_assignment`` -- A mapping from nodes of ``graph`` to lists of colours.
 
-     - ``model`` - ...
+     - ``model`` -- Choices are 'CP' for constraint programming via ``python-constraint`` or ``or`` for constraint programming via Google ``or-tools``.
 
     OUTPUT:
 
-    dictionary -- the list colouring
+    ``dictionary`` -- the list colouring
 
     EXAMPLES:
-    
-    NOTES:
 
-    This function uses the algorithm of ...
+    >>> import networkx
+    >>> G = networkx.complete_graph(10)
+    >>> L = dict([(node, range(10)) for node in G.nodes()])
+    >>> from vizing.models import list_colouring
+    >>> list_colouring(G, L, model = 'CP')
+    {0: [9], 1: [8], 2: [7], 3: [6], 4: [5], 5: [4], 6: [3], 7: [2], 8: [1], 9: [0]}
 
-    ...
-
-    REFERENCES:
-
-    .. [BCDT] Breuil, Conrad, Diamond, Taylor, "Modularity ...."
 
     AUTHORS:
 
     - Matthew Henderson (2010-12-23)
     """
-def list_colouring(graph, list_assignment, model = 'CP'):
-    """ XXX doc XXX """
     if model == 'CP':
-        return CP_model(graph, list_assignment).first_solution()
+        return _CP_model_(graph, list_assignment).first_solution()
     if model == 'or':
-        return or_CP_model(graph, list_assignment).first_solution()
+        return _or_CP_model_(graph, list_assignment).first_solution()
     else:
         raise Exception('No such model')
 

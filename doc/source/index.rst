@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Vizing -- list-colouring of graphs in Python. 
-=============================================
+Vizing -- list-colouring of graphs in Python 
+============================================
 
 Vizing is a collection of Python code for working with list-colouring
 problems. List vertex-colourings and list edge-colourings are both of interest
@@ -18,6 +18,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   intro
+   tutorial
    models
    test_functions
    

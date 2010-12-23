@@ -19,10 +19,10 @@ G2.add_nodes_from(V2)
 G2.add_edges_from(E2)
 
 G3 = networkx.complete_graph(10)
-lists_3 = dict([(node, range(10)) for node in G3.nodes()])
+L3 = dict([(node, range(10)) for node in G3.nodes()])
 
-C1 = list_colouring(G3, lists_3, model = 'CP')
-#C2 = list_colouring(G3, lists_3, model = 'or')
+C1 = list_colouring(G3, L3, model = 'CP')
+#C2 = list_colouring(G3, L3, model = 'or')
 
 #assert vizing.is_proper_list_colouring(G1, C1, L1)
 #assert vizing.is_proper_list_colouring(G2, C2, L2)

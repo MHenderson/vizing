@@ -1,9 +1,33 @@
+r"""
+Python components for modelling list colourings of graphs.
+
+Two notions of vertex colouring are used here.
+
+ 1. A mapping from nodes to colours.
+ 2. A mapping from colours to lists of colours.
+
+AUTHORS:
+
+- Matthew Henderson (2010-12-23): initial version
+
+EXAMPLES:
+"""
+
+#********************************************************************************
+#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
+#
+#  Distributed under the terms of the GNU General Public License (GPL)
+#                  http://www.gnu.org/licenses/
+#********************************************************************************
+
 import constraint
-from constraint_solver import pywrapcp
+import networkx
+#from constraint_solver import pywrapcp
 
 class CP_model:
+
     """ 
-        XXX doc XXX 
+        CP_model
     """
     
     def __init__(self, graph, list_assignment):
@@ -21,6 +45,7 @@ class CP_model:
         return self.problem.getSolution()
 
 class or_CP_model:
+
     """ 
         XXX doc XXX 
     """
@@ -53,6 +78,44 @@ class or_CP_model:
                 self.solution[var] = current.Value(self.var[var])
         return self.solution
 
+r"""
+    This function returns a list-colouring of a list-colourable graph.
+
+    INPUT:
+
+     - ``graph`` - ...
+
+     - ``list_assignment`` -  ...
+
+     - ``model`` - ...
+
+    OUTPUT:
+
+    dictionary -- the list colouring
+
+    EXAMPLES:
+
+    This example illustrates ...
+
+    ::
+
+        >>> A = ModuliSpace()
+        >>> A.point(2,3)
+    
+    NOTES:
+
+    This function uses the algorithm of ...
+
+    ...
+
+    REFERENCES:
+
+    .. [BCDT] Breuil, Conrad, Diamond, Taylor, "Modularity ...."
+
+    AUTHORS:
+
+    - Matthew Henderson (2010-12-23)
+    """
 def list_colouring(graph, list_assignment, model = 'CP'):
     """ XXX doc XXX """
     if model == 'CP':

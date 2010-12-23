@@ -1,4 +1,19 @@
-# Matthew Henderson, 2010.12.23 (Chandlers Ford)
+r"""
+Python components for testing list colourings of graphs.
+
+AUTHORS:
+
+- Matthew Henderson (2010-12-23): initial version
+
+EXAMPLES:
+"""
+
+#********************************************************************************
+#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
+#
+#  Distributed under the terms of the GNU General Public License (GPL)
+#                  http://www.gnu.org/licenses/
+#********************************************************************************
 
 from networkx import graph_clique_number
 

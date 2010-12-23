@@ -3,7 +3,7 @@
 import networkx
 import unittest
 
-from vizing.test import is_proper_list_colouring
+from vizing.test_functions import is_proper_list_colouring
 
 class TestIsProperListColouring(unittest.TestCase):
     """Testing of proper list colouring test function."""

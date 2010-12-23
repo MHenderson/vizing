@@ -22,7 +22,9 @@ EXAMPLES:
 
 import constraint
 import networkx
-#from constraint_solver import pywrapcp
+from constraint_solver import pywrapcp
+
+from vizing.utils import to_colouring
 
 class CP_model:
 
@@ -42,7 +44,7 @@ class CP_model:
  
     def first_solution(self):
         """ XXX doc XXX """
-        return self.problem.getSolution()
+        return to_colouring(self.problem.getSolution())
 
 class or_CP_model:
 
@@ -76,7 +78,7 @@ class or_CP_model:
         if collector.solution_count() == 1:
             for var in self.var:  
                 self.solution[var] = current.Value(self.var[var])
-        return self.solution
+        return to_colouring(self.solution)
 
 r"""
     This function returns a list-colouring of a list-colourable graph.
@@ -94,13 +96,6 @@ r"""
     dictionary -- the list colouring
 
     EXAMPLES:
-
-    This example illustrates ...
-
-    ::
-
-        >>> A = ModuliSpace()
-        >>> A.point(2,3)
     
     NOTES:
 

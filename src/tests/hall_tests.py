@@ -1,18 +1,20 @@
-# Matthew Henderson, 2010.12.23 (Chandler's Ford)
+# Matthew Henderson, 2010.12.30 (Chandler's Ford)
 
 import networkx
 import unittest
 
-from vizing.hall import support
+from vizing.hall import hall_number
+from vizing.hall import halls_sum
+from vizing.hall import halls_condition
 
-class TestSupport(unittest.TestCase):
+class TestHallNumber(unittest.TestCase):
     """
-    Testing of colour support function.
+    Testing of Hall number function.
     """
 
     def setUp(self):
         pass
 
-    def test_support(self):
+    def test_hall_number(self):
         pass
 

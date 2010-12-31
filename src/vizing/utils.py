@@ -17,19 +17,19 @@ def to_colouring(assignment):
             R[q] = Q[q]
     return R
 
-def support(graph, colour, list_assignment):
+def support(graph, list_assignment, colour):
     """
     A list of those vertices in 'graph' which have 'colour' in the list 
     associated with that vertex by 'list_assignment'.
     """
     return filter(lambda vertex: has_colour(colour, vertex, list_assignment), graph.nodes())
 
-def support_subgraph(graph, colour, list_assignment):
+def support_subgraph(graph, list_assignment, colour):
     """
     The subgraph induced by those vertices of 'graph' which have 'colour' 
     in the list associated by 'list_assignment'.
     """
-    return graph.subgraph(support(graph, colour, list_assignment))
+    return graph.subgraph(support(graph, list_assignment, colour))
 
 def independence_number(graph):
     """

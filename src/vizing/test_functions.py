@@ -27,7 +27,7 @@ def is_proper(graph, colouring):
     of 'graph'."""
     return all(map(lambda nodes: is_independent_set(graph, nodes), colouring.values()))
 
-def has_colour(colour, vertex, list_assignment):
+def has_colour(list_assignment, vertex, colour):
     """Decides whether or not 'colour' is a member of the list assigned to 
     'vertex' by the 'list_assignment'."""
     return colour in list_assignment.get(vertex)
@@ -35,7 +35,7 @@ def has_colour(colour, vertex, list_assignment):
 def is_list_colouring(graph, list_assignment, colouring):
     """Decides whether or not 'colouring' is a list colouring of 'graph', 
     according to the 'list_assignment' given."""
-    return all([has_colour(colour, vertex, list_assignment) for colour in colouring for vertex in colouring.get(colour)])
+    return all([has_colour(list_assignment, vertex, colour) for colour in colouring for vertex in colouring.get(colour)])
 
 def is_proper_list_colouring(graph, list_assignment, colouring):
     """Decides whether or not 'colouring' is a proper list colouring of 

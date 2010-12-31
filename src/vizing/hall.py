@@ -15,16 +15,15 @@ def halls_sum(graph, list_assignment, colours):
     """
     return sum([hall_number(graph, list_assignment, colour) for colour in colours])
 
-def halls_condition(graph, list_assignment, colours):
+def hall_inequality(graph, list_assignment, colours):
     """
-    Decide whether Hall's condition is satisfied.
+    Decide whether the Hall inequality for graph is satisfied
     """
     return halls_sum(graph, list_assignment, colours) >= len(graph.nodes())
 
-def halls_condition_induced_by(graph, size, list_assignment, colours, vertices):
+def hall_inequality_induced_by(graph, list_assignment, colours, vertices):
     """
-    Check Hall's condition for a subgraph of 'graph' induced by 'vertices'.
+    Check Hall's inequality for a subgraph of 'graph' induced by 'vertices'.
     """
-    H = graph.subgraph(vertices)
-    return halls_condition(H, list_assignment, colours)
+    return hall_inequality(graph.subgraph(vertices), list_assignment, colours)
 

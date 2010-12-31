@@ -20,8 +20,10 @@ Contents:
 
    intro
    tutorial
+   hall
    models
    test_functions
+   utils
    
 Indices and tables
 ==================

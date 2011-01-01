@@ -9,7 +9,6 @@ def to_colouring(assignment):
     to vertices."""
     def f(y):
         return [x for x in assignment.keys() if assignment[x]==y]
-    P = list(set(assignment.values()))
     Q = dict(zip(assignment.keys(), map(f, assignment)))
     R = {}
     for q in Q:

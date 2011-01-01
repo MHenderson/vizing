@@ -8,7 +8,6 @@ are the first to be implemented.
 AUTHORS:
 
 - Matthew Henderson (2010-12-23): initial version
-
 """
 
 #********************************************************************************
@@ -19,7 +18,6 @@ AUTHORS:
 #********************************************************************************
 
 import constraint
-import networkx
 #from constraint_solver import pywrapcp
 
 from vizing.utils import to_colouring
@@ -27,15 +25,19 @@ from vizing.utils import to_colouring
 class _CP_model_:
 
     """ 
-        Constraint model via python-constraint.
+    Constraint model via python-constraint.
 
-        REFERENCES: 
+    REFERENCES: 
 
-        [pyco] http://labix.org/python-constraint
+    [pyco] http://labix.org/python-constraint
     """
-    
+
     def __init__(self, graph, list_assignment):
-        """ XXX doc XXX """
+    
+        """ 
+        XXX doc XXX 
+        """
+
         self.graph = graph
         self.list_assignment = list_assignment
         self.problem = constraint.Problem()
@@ -43,23 +45,31 @@ class _CP_model_:
             self.problem.addVariable(node, self.list_assignment.get(node)) 
         for edge in self.graph.edges():
             self.problem.addConstraint(constraint.AllDifferentConstraint(), edge)
- 
+
     def first_solution(self):
-        """ XXX doc XXX """
+
+        """ 
+        XXX doc XXX 
+        """
+
         return to_colouring(self.problem.getSolution())
 
 class _or_CP_model_:
 
     """ 
-        Constraint model via Google or-tools.
+    Constraint model via Google or-tools.
 
-        REFERENCES:
+    REFERENCES:
 
-        [orto] http://code.google.com/p/or-tools/
+    [orto] http://code.google.com/p/or-tools/
     """
 
     def __init__(self, graph, list_assignment):
-        """ XXX doc XXX """
+
+        """
+        XXX doc XXX
+        """
+
         self.graph = graph
         self.list_assignment = list_assignment
         self.solver = pywrapcp.Solver('xxxNAMExxx')
@@ -71,11 +81,15 @@ class _or_CP_model_:
             self.solver.Add(self.solver.AllDifferent([self.var[node] for node in edge], False))
 
     def first_solution(self):
-        """ XXX doc XXX """
+
+        """ 
+        XXX doc XXX 
+        """
+    
         var_list = self.var.values()
         vars_phase = self.solver.Phase(var_list,
-                            self.solver.INT_VAR_SIMPLE,
-                            self.solver.INT_VALUE_SIMPLE)
+                                       self.solver.INT_VAR_SIMPLE, 
+                                       self.solver.INT_VALUE_SIMPLE)
         solution = self.solver.Assignment()
         solution.Add(var_list)
         collector = self.solver.FirstSolutionCollector(solution)
@@ -87,16 +101,17 @@ class _or_CP_model_:
         return to_colouring(self.solution)
 
 def list_colouring(graph, list_assignment, model = 'CP'):
+
     r"""
     This function returns a list-colouring of a list-colourable graph.
 
     INPUT:
 
-     - ``graph`` -- A ``networkx`` graph.
-
-     - ``list_assignment`` -- A mapping from nodes of ``graph`` to lists of colours.
-
-     - ``model`` -- Choices are 'CP' for constraint programming via ``python-constraint`` or ``or`` for constraint programming via Google ``or-tools``.
+    - ``graph`` -- A ``networkx`` graph.
+    - ``list_assignment`` -- A mapping from nodes of ``graph`` to lists of colours.
+    - ``model`` -- Choices are 'CP' for constraint programming via 
+      ``python-constraint`` or ``or`` for constraint programming via Google 
+      ``or-tools``.
 
     OUTPUT:
 
@@ -111,11 +126,10 @@ def list_colouring(graph, list_assignment, model = 'CP'):
     >>> list_colouring(G, L, model = 'CP')
     {0: [9], 1: [8], 2: [7], 3: [6], 4: [5], 5: [4], 6: [3], 7: [2], 8: [1], 9: [0]}
 
-
     AUTHORS:
-
     - Matthew Henderson (2010-12-23)
     """
+
     if model == 'CP':
         return _CP_model_(graph, list_assignment).first_solution()
     if model == 'or':

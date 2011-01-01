@@ -15,6 +15,6 @@ class TestListColouring(unittest.TestCase):
         self.L = dict([(node, range(n)) for node in self.G.nodes()])
 
     def test_list_colouring(self):
-        self.C = list_colouring(self.G, self.L, model = 'or')
+        self.C = list_colouring(self.G, self.L, model = 'CP')
         assert is_proper_list_colouring(self.G, self.L, self.C)
 

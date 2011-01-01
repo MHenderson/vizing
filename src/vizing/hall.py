@@ -9,7 +9,7 @@ def hall_number(graph, list_assignment, colour):
     """
     return independence_number(support_subgraph(graph, colour, list_assignment))
 
-def halls_sum(graph, list_assignment, colours):
+def hall_sum(graph, list_assignment, colours):
     """
     Sum Hall numbers over all monochromatic subgraphs.
     """
@@ -19,7 +19,7 @@ def hall_inequality(graph, list_assignment, colours):
     """
     Decide whether the Hall inequality for graph is satisfied
     """
-    return halls_sum(graph, list_assignment, colours) >= len(graph.nodes())
+    return hall_sum(graph, list_assignment, colours) >= len(graph.nodes())
 
 def hall_inequality_induced_by(graph, list_assignment, colours, vertices):
     """

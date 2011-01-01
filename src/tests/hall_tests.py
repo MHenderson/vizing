@@ -4,8 +4,9 @@ import networkx
 import unittest
 
 from vizing.hall import hall_number
-from vizing.hall import halls_sum
-from vizing.hall import halls_condition
+from vizing.hall import hall_sum
+from vizing.hall import hall_inequality
+from vizing.hall import hall_inequality_induced_by
 
 class TestHallNumber(unittest.TestCase):
     """

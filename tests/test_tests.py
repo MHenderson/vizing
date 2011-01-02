@@ -115,27 +115,43 @@ class TestIsListColouring(unittest.TestCase):
                 
     def setUp(self):
         """docstring for setUp"""
+        # Graphs
         self.K22 = networkx.complete_bipartite_graph(2,2)
+        self.K3 = networkx.complete_graph(3)
+        # List assignments
         self.L1 = {0: [1, 2], 1: [2,3], 2: [1,3], 3: [1,2,3]}
+        self.L2 = {0: ['a'], 1:['b'], 2:['c']}
+        self.L3 = {0: ['a'], 1:['a'], 2:['a']}
+        # Vertex colourings
         self.CT1 = {1: [2, 3], 2: [0, 1]}
+        self.CT2 = {'a': [0], 'b': [1], 'c': [2]}
+        self.CT3 = {'a': [0, 1, 2]}
         self.CF1 = {1: [0, 3], 2: [1, 2]}
+        self.CF2 = {'a': [0,1], 'b': [2]}
 
     def test_is_list_colouring(self):
-        """docstring for test_is_list_colouring"""
+        """Positive cases."""
         self.assertTrue(is_list_colouring(self.K22, self.L1, self.CT1))
+        self.assertTrue(is_list_colouring(self.K3, self.L2, self.CT2))
+        self.assertTrue(is_list_colouring(self.K3, self.L3, self.CT3))
 
     def test_is_list_colouring_f(self):
-        """docstring for test_is_list_colouring_f"""
+        """Negative cases."""
         self.assertFalse(is_list_colouring(self.K22, self.L1, self.CF1))      
+        self.assertFalse(is_list_colouring(self.K3, self.L2, self.CF2))
 
 class TestIsProperListColouring(unittest.TestCase):
     """Testing of proper list colouring test function."""
 
     def setUp(self):
-        self.G = networkx.complete_bipartite_graph(2,2)
-        self.L = {0: [1, 2], 1: [2,3], 2: [1,3], 3: [1,2,3]}
-        self.C = {1: [2, 3], 2: [0, 1]}
+        self.K22 = networkx.complete_bipartite_graph(2,2)
+        self.L1 = {0: [1, 2], 1: [2,3], 2: [1,3], 3: [1,2,3]}
+        self.CT1 = {1: [2, 3], 2: [0, 1]}
+        self.CF1 = {1: [0, 2], 2: [1], 3:[3]}
 
     def test_is_proper_list_colouring(self):
-        assert is_proper_list_colouring(self.G, self.L, self.C)
+        self.assertTrue(is_proper_list_colouring(self.K22, self.L1, self.CT1))
+
+    def test_is_proper_list_colouring_f(self):
+        self.assertFalse(is_proper_list_colouring(self.K22, self.L1, self.CF1))
 

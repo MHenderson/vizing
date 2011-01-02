@@ -1,4 +1,17 @@
-# Matthew Henderson, 2010.12.23 (Chandler's Ford)
+r"""
+Testing of list-colouring models.
+
+- Matthew Henderson (2010-12-23): initial version
+
+EXAMPLES:
+"""
+
+#********************************************************************************
+#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
+#
+#  Distributed under the terms of the GNU General Public License (GPL)
+#                  http://www.gnu.org/licenses/
+#********************************************************************************   
 
 import networkx
 import unittest
@@ -10,21 +23,13 @@ class TestListColouring(unittest.TestCase):
     """Testing of list colouring."""
 
     def setUp(self):
-        pass
+        """Some graphs and lists used in testing."""
+        self.K3 = networkx.complete_graph(3)
+        self.L1 = dict([(node, range(3)) for node in self.K3.nodes()])        
+        self.L2 = dict([(node, ['a','b','c','d']) for node in self.K3.nodes()])
 
     def test_list_colouring(self):
-        """With lists of integers."""
-        n = 3
-        G = networkx.complete_graph(n)
-        L = dict([(node, range(n)) for node in G.nodes()])        
-        C = list_colouring(G, L, model = 'CP')
-        assert is_proper_list_colouring(G, L, C)
-    
-    def test_list_colouring_strings(self):
-        """With lists of strings."""
-        n = 3
-        G = networkx.complete_graph(n)
-        L = dict([(node,['a','b','c','d']) for node in G.nodes()])
-        C = list_colouring(G, L, model = 'CP')
-        assert is_proper_list_colouring(G, L, C)
+        """Positive cases."""   
+        C1 = list_colouring(self.K3, self.L1, model = 'CP')        
+        self.assertTrue(is_proper_list_colouring(self.K3, self.L1, C1))
 

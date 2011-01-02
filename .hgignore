@@ -4,5 +4,8 @@ syntax: glob
 *.dblite
 *.bak
 *.pyc
-doc/build
+docs/build
 *.swo
+dist
+build
+MANIFEST

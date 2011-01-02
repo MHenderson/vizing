@@ -20,7 +20,7 @@ AUTHORS:
 import constraint
 #from constraint_solver import pywrapcp
 
-from vizing.utils import to_colouring
+from utils import to_colouring
 
 class _CP_model_:
 

@@ -1,8 +1,6 @@
 r"""
 Python components for testing list colourings of graphs.
 
-AUTHORS:
-
 - Matthew Henderson (2010-12-23): initial version
 
 EXAMPLES:
@@ -17,7 +15,7 @@ EXAMPLES:
 
 from networkx import graph_clique_number
 
-def is_independent_set(graph, nodes):
+def is_independent(graph, nodes):
     """Decides whether of not the subgraph of 'graph' induced by nodes in 
     'nodes' is an independent set or not."""
     return graph_clique_number(graph.subgraph(nodes))==1
@@ -25,7 +23,7 @@ def is_independent_set(graph, nodes):
 def is_proper(graph, colouring):
     """Decides whether or not 'colouring' is a proper colouring of the vertices
     of 'graph'."""
-    return all(map(lambda nodes: is_independent_set(graph, nodes), colouring.values()))
+    return all(map(lambda nodes: is_independent(graph, nodes), colouring.values()))
 
 def has_colour(list_assignment, vertex, colour):
     """Decides whether or not 'colour' is a member of the list assigned to 

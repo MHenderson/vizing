@@ -10,11 +10,21 @@ class TestListColouring(unittest.TestCase):
     """Testing of list colouring."""
 
     def setUp(self):
-        n = 3
-        self.G = networkx.complete_graph(n)
-        self.L = dict([(node, range(n)) for node in self.G.nodes()])
+        pass
 
     def test_list_colouring(self):
-        self.C = list_colouring(self.G, self.L, model = 'CP')
-        assert is_proper_list_colouring(self.G, self.L, self.C)
+        """With lists of integers."""
+        n = 3
+        G = networkx.complete_graph(n)
+        L = dict([(node, range(n)) for node in G.nodes()])        
+        C = list_colouring(G, L, model = 'CP')
+        assert is_proper_list_colouring(G, L, C)
+    
+    def test_list_colouring_strings(self):
+        """With lists of strings."""
+        n = 3
+        G = networkx.complete_graph(n)
+        L = dict([(node,['a','b','c','d']) for node in G.nodes()])
+        C = list_colouring(G, L, model = 'CP')
+        assert is_proper_list_colouring(G, L, C)
 

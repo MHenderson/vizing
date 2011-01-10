@@ -20,7 +20,7 @@ AUTHORS:
 import constraint
 #from constraint_solver import pywrapcp
 
-from utils import to_colouring
+from utils import vtc_to_ctv
 
 class _CP_model_:
 
@@ -52,7 +52,7 @@ class _CP_model_:
         XXX doc XXX 
         """
 
-        return to_colouring(self.problem.getSolution())
+        return vtc_to_ctv(self.problem.getSolution())
 
 class _or_CP_model_:
 
@@ -98,7 +98,7 @@ class _or_CP_model_:
         if collector.solution_count() == 1:
             for var in self.var:  
                 self.solution[var] = current.Value(self.var[var])
-        return to_colouring(self.solution)
+        return vtc_to_ctv(self.solution)
 
 def list_colouring(graph, list_assignment, model = 'CP'):
 

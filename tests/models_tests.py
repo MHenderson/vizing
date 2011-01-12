@@ -16,7 +16,7 @@ EXAMPLES:
 import networkx
 import unittest
 
-from vizing.models import list_colouring
+from vizing.colouring import list_colouring
 from vizing.test_functions import is_proper_list_colouring
 
 class TestListColouring(unittest.TestCase):

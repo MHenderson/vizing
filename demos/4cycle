@@ -2,7 +2,7 @@
 
 from networkx import Graph
 
-from vizing.models import list_colouring
+from vizing.colouring import list_colouring
 
 V = [1, 2, 3, 4]
 E = [(1, 2), (1, 4), (2, 3), (3, 4)]
@@ -12,5 +12,5 @@ G = Graph()
 G.add_nodes_from(V)
 G.add_edges_from(E)
 
-C1 = list_colouring(G, L)
+C1 = list_colouring(G, L, model = 'CP')
 print C1

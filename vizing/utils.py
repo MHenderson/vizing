@@ -14,21 +14,16 @@ AUTHORS:
 #********************************************************************************
 
 from networkx import graph_clique_number, complement
-from itertools import chain
 
 from test_functions import has_colour
 
-def flatten(list_of_lists):
-    "Flatten one level of nesting"
-    return chain.from_iterable(list_of_lists)
-
 def grange(vtc_colouring):
     """The colours used by a colouring (vertex-to-color map)."""
-    return list(set(list(flatten(vtc_colouring.values()))))
+    return list(set((vtc_colouring.values())))
 
 def inverse(vtc_colouring, colour):
     """The vertices where a colour appears in a vertex-to-colour map."""
-    return [v for v in vtc_colouring if colour in vtc_colouring[v]]
+    return [v for v in vtc_colouring if vtc_colouring[v] == colour]
 
 def vtc_to_ctv(vtc):
     """Translate a verticex-to-colour map into a colour-to-vertices map."""

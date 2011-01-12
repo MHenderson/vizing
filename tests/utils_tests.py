@@ -7,8 +7,9 @@ from vizing.utils import grange
 from vizing.utils import support
 from vizing.utils import vtc_to_ctv
 
-vtc1 = {0:[1], 1:[2], 2:[0]}
-vtc2 = {0:[1], 1:[1], 2:[1]}
+vtc1 = {0:1, 1:2, 2:0}
+vtc2 = {0:1, 1:1, 2:1}
+vtc3 = {1: 2, 2: 3, 3: 2, 4: 3}
 
 ctv1 = {0:[0],1:[0]}
 ctv2 = {0:[0,1],1:[2]}
@@ -52,6 +53,7 @@ class TestVtcToCtv(unittest.TestCase):
     def test_vtc_to_ctv(self):    
         self.assertEqual(vtc_to_ctv(vtc1), {0:[2], 1:[0], 2:[1]})
         self.assertEqual(vtc_to_ctv(vtc2), {1:[0, 1, 2]})
+        self.assertEqual(vtc_to_ctv(vtc3), {2:[1, 3], 3:[2,4]})
 
 class TestSupport(unittest.TestCase):
     """

@@ -13,14 +13,15 @@ AUTHORS:
 #                  http://www.gnu.org/licenses/
 #********************************************************************************
 
-from utils import support_subgraph, independence_number 
+from vizing.utils import support_subgraph, independence_number, powerset
 
 def hall_number(graph, list_assignment, colour):
     """
     Compute the independence number of the subgraph induced by those 
-    vertices in 'graph' having 'colour' in their list.
+    vertices in 'graph' having 'colour' in their list. Not to be confused with
+    Hall number in the literature. 
     """
-    return independence_number(support_subgraph(graph, colour, list_assignment))
+    return independence_number(support_subgraph(graph, list_assignment, colour))
 
 def hall_sum(graph, list_assignment, colours):
     """
@@ -40,3 +41,14 @@ def hall_inequality_induced_by(graph, list_assignment, colours, vertices):
     """
     return hall_inequality(graph.subgraph(vertices), list_assignment, colours)
 
+def halls_condition_restricted_to(graph, list_assignment, colours, node_subsets):
+    """
+    Check Hall's condition restricted to subgraphs induced by node_subsets.
+    """
+    return all(map(lambda x: hall_inequality_induced_by(graph, list_assignment, colours, x), node_subsets))
+
+def halls_condition(graph, list_assignment, colours):
+    """
+    Check Hall's condition.
+    """
+    return halls_condition_restricted_to(graph, list_assignment, colours, powerset(graph.nodes()))

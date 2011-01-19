@@ -12,7 +12,7 @@ AUTHORS:
 #  Distributed under the terms of the GNU General Public License (GPL)
 #                  http://www.gnu.org/licenses/
 #********************************************************************************
-
+import itertools
 from networkx import graph_clique_number, complement
 
 from test_functions import has_colour
@@ -51,4 +51,8 @@ def independence_number(graph):
         return 0
     else:
         return graph_clique_number(complement(graph))
+
+def powerset(iterable):
+    s = list(iterable)
+    return itertools.chain.from_iterable(itertools.combinations(s, r) for r in range(len(s)+1))
 

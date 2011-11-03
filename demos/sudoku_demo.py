@@ -12,5 +12,6 @@ s = '1....7.9.\
 d = sudoku.string_to_dict(s, 3)
 P = sudoku.puzzle_as_graph(d, 3)
 print P.order(), P.size()
+print P.nodes()
 # create Sudoku list assignment
 # solve via list colouring

@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name = "vizing",
     packages = ["vizing"],
-    version = "0.0.9",
+    version = "0.0.10",
     description = "List-colouring of graphs",
     author = "Matthew Henderson",
     author_email = "matthew.james.henderson@gmail.com",

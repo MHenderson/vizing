@@ -23,11 +23,17 @@ def hall_number(graph, list_assignment, colour):
     """
     return independence_number(support_subgraph(graph, list_assignment, colour))
 
+def hall_numbers(graph, list_assignment, colours):
+    """
+    A list of Hall numbers for each monochromatic subgraph.
+    """
+    return [hall_number(graph, list_assignment, colour) for colour in colours]
+
 def hall_sum(graph, list_assignment, colours):
     """
     Sum Hall numbers over all monochromatic subgraphs.
     """
-    return sum([hall_number(graph, list_assignment, colour) for colour in colours])
+    return sum(hall_numbers(graph, list_assignment, colours))
 
 def hall_inequality(graph, list_assignment, colours):
     """

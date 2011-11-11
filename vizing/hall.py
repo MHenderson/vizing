@@ -15,13 +15,19 @@ AUTHORS:
 
 from vizing.utils import support_subgraph, independence_number, powerset
 
+def hall_subgraph(graph, list_assignment, colour):
+    """
+
+    """
+    return support_subgraph(graph, list_assignment, colour)
+
 def hall_number(graph, list_assignment, colour):
     """
     Compute the independence number of the subgraph induced by those 
     vertices in 'graph' having 'colour' in their list. Not to be confused with
     Hall number in the literature. 
     """
-    return independence_number(support_subgraph(graph, list_assignment, colour))
+    return independence_number(hall_subgraph(graph, list_assignment, colour))
 
 def hall_numbers(graph, list_assignment, colours):
     """

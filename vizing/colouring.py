@@ -88,7 +88,7 @@ def first_available_color(graph, node):
 
 def random_available_color(graph, node):
     """A random colour from the list of a node."""
-    list = graph.node[node]['list']
+    list = graph.node[node]['list'][:]
     for color in neighboring_colors(graph, node):
         list.remove(color)
     return random.choice(list)

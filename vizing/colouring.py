@@ -90,7 +90,8 @@ def random_available_color(graph, node):
     """A random colour from the list of a node."""
     list = graph.node[node]['list'][:]
     for color in neighboring_colors(graph, node):
-        list.remove(color)
+        if color in list:
+            list.remove(color)
     return random.choice(list)
 
 def saturation_degree(graph, node):

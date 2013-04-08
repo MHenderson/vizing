@@ -2,6 +2,10 @@
 
 from distutils.core import setup
 
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
 setup(
     name = "vizing",
     packages = ["vizing"],
@@ -20,11 +24,5 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-    long_description = """\
-Vizing -- list-colouring of graphs in Python 
-============================================
-
-Vizing is a collection of Python code for working with list-colouring problems. List vertex-colourings and list edge-colourings are both of interest here. With Vizing you can easily build a variety of models of a list colouring problem instances and use solvers to find realisations of your models. 
-
-Visualisations in LaTeX are provided via ``tkz-graph``."""
-)
+    long_description = readme(),
+    )

@@ -26,7 +26,7 @@ def inverse(vtc_colouring, colour):
     return [v for v in vtc_colouring if vtc_colouring[v] == colour]
 
 def vtc_to_ctv(vtc):
-    """Translate a verticex-to-colour map into a colour-to-vertices map."""
+    """Translate a vertex-to-colour map into a colour-to-vertices map."""
     return dict([(colour, inverse(vtc, colour)) for colour in grange(vtc)])
 
 def support(list_assignment, nodes, colour):

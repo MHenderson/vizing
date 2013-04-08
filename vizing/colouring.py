@@ -86,6 +86,13 @@ def first_available_color(graph, node):
     else:
         return least_missing(used_colors)
 
+def random_available_color(graph, node):
+    """A random colour from the list of a node."""
+    list = graph.node[node]['list']
+    for color in neighboring_colors(graph, node):
+        list.remove(color)
+    return random.choice(list)
+
 def saturation_degree(graph, node):
     """Saturation degree of 'node' in 'graph'."""
     return len(set(neighboring_colors(graph, node)))
@@ -95,6 +102,12 @@ class FirstAvailableColor():
 
     def __call__(self, graph, node):
         return first_available_color(graph, node)
+
+class RandomAvailableColor():
+    """Random color choice visitor."""
+
+    def __call__(self, graph, node):
+        return random_available_color(graph, node)
 
 class InOrder():
     """Natural vertex ordering strategy."""

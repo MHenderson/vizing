@@ -19,8 +19,8 @@ AUTHORS:
 
 import random
 
-from vizing.models.pythonconstraint import _CP_model_
-#from vizing.models.ortools import _or_CP_model_
+from vizing.pythonconstraint import _CP_model_
+#from vizing.ortools import _or_CP_model_
 
 def list_colouring(graph, list_assignment, model = 'CP'):
 
@@ -54,8 +54,6 @@ def list_colouring(graph, list_assignment, model = 'CP'):
 
     if model == 'CP':
         return _CP_model_(graph, list_assignment).first_solution()
-    if model == 'or':
-        return _or_CP_model_(graph, list_assignment).first_solution()
     else:
         raise Exception('No such model')
 
@@ -65,7 +63,7 @@ def list_colouring(graph, list_assignment, model = 'CP'):
 
 def neighboring_colors(graph, node):
     """Returns list of colors used on neighbors of 'node' in 'graph'."""
-    return filter(None, [graph.node[neighbor].get('color') for neighbor in graph.neighbors(node)])
+    return [_f for _f in [graph.node[neighbor].get('color') for neighbor in graph.neighbors(node)] if _f]
 
 def n_colors(graph):
     """The number of distinct colors used on vertices of 'graph'."""
@@ -141,7 +139,7 @@ class DSATOrder():
     def dsatur(self, node):
         return saturation_degree(self.graph, node)
 
-    def next(self):
+    def __next__(self):
         self.value += 1
         if self.value > self.graph.order(): raise StopIteration
         self.nodes.sort(key = self.dsatur)

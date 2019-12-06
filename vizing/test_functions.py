@@ -26,14 +26,14 @@ def is_independent(graph, nodes):
 
 def is_exact(graph, colouring):
     """Decides whether exactly every vertex of 'graph' is coloured."""
-    coloured_vertices = list(itertools.chain.from_iterable(colouring.values()))
+    coloured_vertices = list(itertools.chain.from_iterable(list(colouring.values())))
     coloured_vertices.sort()
     return coloured_vertices == graph.nodes()
 
 def is_proper(graph, colouring):
     """Decides whether or not 'colouring' is a proper colouring of the vertices
     of 'graph'."""
-    return is_exact(graph, colouring) and all(map(lambda nodes: is_independent(graph, nodes), colouring.values()))
+    return is_exact(graph, colouring) and all([is_independent(graph, nodes) for nodes in list(colouring.values())])
 
 def has_colour(list_assignment, vertex, colour):
     """Decides whether or not 'colour' is a member of the list assigned to 

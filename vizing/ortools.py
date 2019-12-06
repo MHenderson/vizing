@@ -51,7 +51,7 @@ class _or_CP_model_:
         XXX doc XXX 
         """
     
-        var_list = self.var.values()
+        var_list = list(self.var.values())
         vars_phase = self.solver.Phase(var_list,
                                        self.solver.INT_VAR_SIMPLE, 
                                        self.solver.INT_VALUE_SIMPLE)

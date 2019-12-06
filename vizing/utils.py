@@ -15,11 +15,11 @@ AUTHORS:
 import itertools
 from networkx import graph_clique_number, complement
 
-from test_functions import has_colour
+from .test_functions import has_colour
 
 def grange(vtc_colouring):
     """The colours used by a colouring (vertex-to-color map)."""
-    return list(set((vtc_colouring.values())))
+    return list(set((list(vtc_colouring.values()))))
 
 def inverse(vtc_colouring, colour):
     """The vertices where a colour appears in a vertex-to-colour map."""
@@ -34,7 +34,7 @@ def support(list_assignment, nodes, colour):
     A list of those vertices in 'nodes' which have 'colour' in the list 
     associated with that vertex by 'list_assignment'.
     """
-    return filter(lambda vertex: has_colour(list_assignment, vertex, colour), nodes)
+    return [vertex for vertex in nodes if has_colour(list_assignment, vertex, colour)]
 
 def support_subgraph(graph, list_assignment, colour):
     """

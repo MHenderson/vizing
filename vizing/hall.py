@@ -57,7 +57,7 @@ def halls_condition_restricted_to(graph, list_assignment, colours, node_subsets)
     """
     Check Hall's condition restricted to subgraphs induced by node_subsets.
     """
-    return all(map(lambda x: hall_inequality_induced_by(graph, list_assignment, colours, x), node_subsets))
+    return all([hall_inequality_induced_by(graph, list_assignment, colours, x) for x in node_subsets])
 
 def halls_condition(graph, list_assignment, colours):
     """

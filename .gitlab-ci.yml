@@ -2,5 +2,6 @@ py36_nose:
   image: python:3.6
   script:
     - apt-get update -q -y
+    - pip install nose
     - python setup.py sdist bdist_wheel
     - nosetests -v --nocaptures

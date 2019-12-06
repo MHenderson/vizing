@@ -4,4 +4,4 @@ py36_nose:
     - apt-get update -q -y
     - pip install nose
     - python setup.py sdist bdist_wheel
-    - nosetests -v --nocaptures
+    - nosetests -v

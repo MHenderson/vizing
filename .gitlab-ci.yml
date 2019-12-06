@@ -3,5 +3,4 @@ py36_nose:
   script:
     - apt-get update -q -y
     - pip install -r requirements.txt
-    - python setup.py sdist bdist_wheel
     - nosetests -v

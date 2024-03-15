@@ -1,5 +1,6 @@
 import itertools
-from networkx import graph_clique_number, complement
+
+#from networkx import graph_clique_number, complement
 
 from .test_functions import has_colour
 

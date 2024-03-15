@@ -1,5 +1,6 @@
 import itertools
-from networkx import graph_clique_number
+
+#from networkx import graph_clique_number
 
 def is_independent(graph, nodes):
     """Decides whether of not the subgraph of 'graph' induced by nodes in 

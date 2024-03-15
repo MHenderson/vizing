@@ -1,2 +1,0 @@
-recursive-include docs *.html *.css *.png *.gif
-include README.rst

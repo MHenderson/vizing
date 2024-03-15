@@ -1,22 +1,3 @@
-r"""
-Python components for modelling list colourings of graphs.
-
-This module provides several different models of list-colouring problems. 
-Constraint models using the ``python-constraint`` and ``or-tools`` libraries
-are the first to be implemented.
-
-AUTHORS:
-
-- Matthew Henderson (2010-12-23): initial version
-"""
-
-#********************************************************************************
-#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
-#
-#  Distributed under the terms of the GNU General Public License (GPL)
-#                  http://www.gnu.org/licenses/
-#********************************************************************************
-
 import random
 
 from vizing.pythonconstraint import _CP_model_
@@ -47,9 +28,6 @@ def list_colouring(graph, list_assignment, model = 'CP'):
     >>> from vizing.models import list_colouring
     >>> list_colouring(G, L, model = 'CP')
     {0: [9], 1: [8], 2: [7], 3: [6], 4: [5], 5: [4], 6: [3], 7: [2], 8: [1], 9: [0]}
-
-    AUTHORS:
-    - Matthew Henderson (2010-12-23)
     """
 
     if model == 'CP':

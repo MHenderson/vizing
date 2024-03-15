@@ -1,6 +1,0 @@
-Hall
-----
-
-.. automodule:: hall
-   :members: 
-

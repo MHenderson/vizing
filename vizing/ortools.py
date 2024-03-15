@@ -1,20 +1,3 @@
-r"""
-Python components for modelling list colourings of graphs.
-
-This module provides the  ``or-tools`` list-colouring model.
-
-AUTHORS:
-
-- Matthew Henderson (2011-01-12): initial version
-"""
-
-#********************************************************************************
-#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
-#
-#  Distributed under the terms of the GNU General Public License (GPL)
-#                  http://www.gnu.org/licenses/
-#********************************************************************************
-
 from constraint_solver import pywrapcp
 
 from vizing.utils import vtc_to_ctv

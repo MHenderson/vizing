@@ -1,18 +1,3 @@
-r"""
-Python components for calculating Hall inequalities.
-
-AUTHORS:
-
-- Matthew Henderson (2010-12-30): initial version
-"""
-
-#********************************************************************************
-#       Copyright (C) 2010 Matthew Henderson <matthew.james.henderson@gmail.com>
-#
-#  Distributed under the terms of the GNU General Public License (GPL)
-#                  http://www.gnu.org/licenses/
-#********************************************************************************
-
 from vizing.utils import support_subgraph, independence_number, powerset
 
 def hall_subgraph(graph, list_assignment, colour):

@@ -103,4 +103,4 @@ test = ["coverage", "nose"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "1db2a5e87a45c5eada27c447302e65f43cb572c2a543a720d87409b65348a41f"
+content-hash = "fb0d236d8f72b33f93419f4a475a4a3eb4ea76f9f18ff9728e5eb3f69cb6e822"

@@ -1,6 +1,9 @@
 import itertools
 
-#from networkx import graph_clique_number
+from networkx import node_clique_number
+
+def graph_clique_number(graph):
+    return max(node_clique_number(graph))
 
 def is_independent(graph, nodes):
     """Decides whether of not the subgraph of 'graph' induced by nodes in 

@@ -1,8 +1,8 @@
 import itertools
 
-#from networkx import graph_clique_number, complement
+from networkx import complement
 
-from .test_functions import has_colour
+from .test_functions import graph_clique_number, has_colour
 
 def grange(vtc_colouring):
     """The colours used by a colouring (vertex-to-color map)."""

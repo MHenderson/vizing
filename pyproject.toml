@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "vizing"
-version = "0.1.0"
-description = "List-colouring in Python."
+version = "0.1.0.9000"
+description = "Constraint-based list-colouring in Python."
 authors = ["Matthew Henderson <matthew.james.henderson@gmail.com>"]
 readme = "README.md"
 
@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.10"
 python-constraint = "^1.4.0"
 networkx = "^3.2.1"
+listcolouring = "^0.2.0"
 
 
 [tool.poetry.group.test.dependencies]
@@ -19,7 +20,3 @@ networkx = "^3.2.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.pytest.ini_options]
-pythonpath = [
-  "."
-]

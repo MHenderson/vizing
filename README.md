@@ -4,4 +4,4 @@
 
 # vizing
 
-List-colouring in Python.
+Constraint-based list-colouring in Python.

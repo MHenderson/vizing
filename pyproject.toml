@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vizing"
-version = "0.1.0.9001"
+version = "0.1.0.9002"
 description = "Constraint-based list-colouring in Python."
 authors = ["Matthew Henderson <matthew.james.henderson@gmail.com>"]
 readme = "README.md"

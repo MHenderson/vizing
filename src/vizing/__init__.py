@@ -27,28 +27,35 @@ def node_list_colouring_solution(G):
     G.nodes[node]['colour'] = S[node]
   return(G)
 
-def edge_list_colouring_problem(G):
+def edge_list_colouring_problem(G, directed = False):
   """
   Return a constraint problem representing an edge list-colouring instance.
 
   :param G: A graph with lists of permissible colours assigned to edges.
+  :param directed: Is the input graph directed or not?
   :return An edge list-colouring constraint problem.
   """
   P = ct.Problem()
   for edge in G.edges():
     P.addVariable(edge, G.edges[edge]['permissible'])
-  for node in G.nodes():
-    P.addConstraint(ct.AllDifferentConstraint(), [tuple(sorted(x)) for x in G.edges(node)])
+  if(directed):
+    for node in G.nodes():
+      P.addConstraint(ct.AllDifferentConstraint(), [x for x in G.out_edges(node)])
+      P.addConstraint(ct.AllDifferentConstraint(), [x for x in G.in_edges(node)])
+    else:
+      for node in G.nodes():
+        P.addConstraint(ct.AllDifferentConstraint(), [tuple(sorted(x)) for x in G.edges(node)])
   return(P)
 
-def edge_list_colouring_solution(G):
+def edge_list_colouring_solution(G, directed = False):
   """
   Return an edge-coloured graph.
 
   :param G: A graph with lists of permissible colours assigned to edges.
+  :param directed: Is the input graph directed or not?
   :return A properly edge list-coloured graph.
   """
-  P = edge_list_colouring_problem(G)
+  P = edge_list_colouring_problem(G, directed)
   S = P.getSolution()
   for edge in G.edges():
     G.edges()[edge]['colour'] = S[edge]

@@ -1,5 +1,9 @@
 # vizing (development version)
 
+# vizing (v0.2.1)
+
+* Constraint model of edge list-colouring of directed graphs using python-constraint.
+
 # vizing (v0.2.0)
 
 * Starting again again.
@@ -11,3 +15,4 @@
 * Starting again.
 * Removed docs, tests. Leaving only modules behind.
 * Start using poetry.
+

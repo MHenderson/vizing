@@ -40,8 +40,8 @@ def edge_list_colouring_problem(G, directed = False):
     P.addVariable(edge, G.edges[edge]['permissible'])
   if(directed):
     for node in G.nodes():
-      P.addConstraint(ct.AllDifferentConstraint(), [x for x in G.out_edges(node)])
-      P.addConstraint(ct.AllDifferentConstraint(), [x for x in G.in_edges(node)])
+      P.addConstraint(ct.AllDifferentConstraint(), G.out_edges(node))
+      P.addConstraint(ct.AllDifferentConstraint(), G.in_edges(node))
     else:
       for node in G.nodes():
         P.addConstraint(ct.AllDifferentConstraint(), [tuple(sorted(x)) for x in G.edges(node)])

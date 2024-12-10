@@ -1,4 +1,5 @@
 import constraint as ct
+import networkx as nx
 
 def node_list_colouring_problem(G):
   """
@@ -22,9 +23,7 @@ def node_list_colouring_solution(G):
   :return A properly list-coloured graph.
   """
   P = node_list_colouring_problem(G)
-  S = P.getSolution()
-  for node in S:
-    G.nodes[node]['colour'] = S[node]
+  nx.set_node_attributes(G, P.getSolution(), name = 'colour')
   return(G)
 
 def edge_list_colouring_problem(G, directed = False):
@@ -56,9 +55,7 @@ def edge_list_colouring_solution(G, directed = False):
   :return A properly edge list-coloured graph.
   """
   P = edge_list_colouring_problem(G, directed)
-  S = P.getSolution()
-  for edge in G.edges():
-    G.edges()[edge]['colour'] = S[edge]
+  nx.set_edge_attributes(G, P.getSolution(), 'colour')
   return(G)
 
 def total_list_colouring_problem(G):
